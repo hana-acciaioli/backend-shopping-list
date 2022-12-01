@@ -50,7 +50,7 @@ describe('items', () => {
       id: expect.any(String),
       description: newItem.description,
       qty: newItem.qty,
-      user_id: user.id,
+      userId: user.id,
       bought: false,
     });
   });
@@ -63,12 +63,12 @@ describe('items', () => {
     const user1Item = await Item.insert({
       description: 'apples',
       qty: 6,
-      user_id: user.id,
+      userId: user.id,
     });
     await Item.insert({
       description: 'eggs',
       qty: 12,
-      user_id: user2.id,
+      userId: user2.id,
     });
     const resp = await agent.get('/api/v1/items');
     expect(resp.status).toEqual(200);
@@ -86,7 +86,7 @@ describe('items', () => {
     const item = await Item.insert({
       description: 'apples',
       qty: 6,
-      user_id: user.id,
+      userId: user.id,
     });
     const resp = await agent
       .put(`/api/v1/items/${item.id}`)
@@ -103,7 +103,7 @@ describe('items', () => {
     const item = await Item.insert({
       description: 'apples',
       qty: 6,
-      user_id: user2.id,
+      userId: user2.id,
     });
     const resp = await agent
       .put(`/api/v1/items/${item.id}`)
@@ -116,7 +116,7 @@ describe('items', () => {
     const item = await Item.insert({
       description: 'apples',
       qty: 6,
-      user_id: user.id,
+      userId: user.id,
     });
     const resp = await agent.delete(`/api/v1/items/${item.id}`);
     expect(resp.status).toBe(200);
